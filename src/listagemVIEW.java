@@ -41,7 +41,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         btnVendas = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         listaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,6 +209,7 @@ public class listagemVIEW extends javax.swing.JFrame {
             model.setNumRows(0);
             
             ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
+            System.out.println("Tamanho da lista: " + listagem.size());
             
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{

@@ -24,8 +24,20 @@ public class ProdutosDAO {
     
     public void cadastrarProduto (ProdutosDTO produto){
         
-        
-        //conn = new conectaDAO().connectDB();
+        conn = new conectaDAO().connectDB();
+        String sql = "INSERT INTO produtos(nome, valor, status) VALUES "
+                            + "(?, ?, ?)"; 
+                    try {
+                        prep = this.conn.prepareStatement(sql);
+                        prep.setString(1, produto.getNome());
+                        prep.setInt(2, produto.getValor());
+                        prep.setString(3, produto.getStatus());
+                        prep.execute();  
+                        
+                        JOptionPane.showMessageDialog(null, "O produto foi cadastrado com sucesso!");
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Erro ao inserir funcionario: " + e.getMessage());
+                    }
         
         
     }

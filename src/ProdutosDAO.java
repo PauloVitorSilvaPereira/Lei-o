@@ -36,7 +36,7 @@ public class ProdutosDAO {
                         
                         JOptionPane.showMessageDialog(null, "O produto foi cadastrado com sucesso!");
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Erro ao inserir funcionario: " + e.getMessage());
+                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar o produto: " + e.getMessage());
                     }
         
         
@@ -69,6 +69,27 @@ public class ProdutosDAO {
 
         
         return listagem;
+    }
+    
+    public void venderProduto(int id){
+    
+    conn = new conectaDAO().connectDB();
+        String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = (?)"; 
+                    try {
+                        prep = this.conn.prepareStatement(sql);
+                        prep.setInt(1, id);
+                        prep.execute();  
+                        
+                        JOptionPane.showMessageDialog(null, "O produto foi vendido com sucesso!");
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Erro ao veder o produto: " + e.getMessage());
+                    }
+    
+    
+    
+    
+    
+    
     }
     
     
